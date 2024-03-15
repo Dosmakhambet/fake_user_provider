@@ -1,0 +1,115 @@
+@startuml
+class Countries {
+  id: serial
+  created: timestamp
+  updated: timestamp
+  name: varchar(32)
+  alpha2: varchar(2)
+  alpha3: varchar(3)
+  status: varchar(32)
+}
+
+class Addresses {
+  id: uuid
+  created: timestamp
+  updated: timestamp
+  country_id: integer
+  address: varchar(128)
+  zip_code: varchar(32)
+  archived: timestamp
+  city: varchar(32)
+  state: varchar(32)
+}
+
+class Users {
+  id: uuid
+  secret_key: varchar(32)
+  created: timestamp
+  updated: timestamp
+  first_name: varchar(32)
+  last_name: varchar(32)
+  verified_at: timestamp
+  archived_at: timestamp
+  status: varchar(64)
+  filled: boolean
+  address_id: uuid
+}
+
+class Merchants {
+  id: uuid
+  creator_id: uuid
+  created: timestamp
+  updated: timestamp
+  company_name: varchar(32)
+  company_id: varchar(32)
+  email: varchar(32)
+  phone_number: varchar(32)
+  verified_at: timestamp
+  archived_at: timestamp
+  status: varchar(32)
+  filled: boolean
+}
+
+class MerchantMembers {
+  id: uuid
+  user_id: uuid
+  created: timestamp
+  updated: timestamp
+  merchant_id: uuid
+  member_role: varchar(32)
+  status: varchar(32)
+}
+
+class Individuals {
+  id: uuid
+  user_id: uuid
+  created: timestamp
+  updated: timestamp
+  passport_number: varchar(32)
+  phone_number: varchar(32)
+  email: varchar(32)
+  verified_at: timestamp
+  archived_at: timestamp
+  status: varchar(32)
+}
+
+class VerificationStatuses {
+  id: uuid
+  created: timestamp
+  updated: timestamp
+  profile_id: uuid
+  profile_type: varchar(32)
+  details: varchar(255)
+  verification_status: varchar(32)
+}
+
+class ProfileHistory {
+  id: uuid
+  created: timestamp
+  profile_id: uuid
+  profile_type: varchar(32)
+  reason: varchar(255)
+  comment: varchar(255)
+  changed_values: varchar(1024)
+}
+
+class MerchantMembersInvitations {
+  id: uuid
+  created: timestamp
+  expires: timestamp
+  merchant_id: uuid
+  first_name: varchar(32)
+  last_name: varchar(32)
+  email: varchar(32)
+  status: varchar(32)
+}
+
+Addresses "1" -- "0..*" Countries
+Users "1" -- "0..1" Addresses
+Merchants "1" -- "0..*" Users
+MerchantMembers "0..*" -- "1" Users
+Individuals "0..1" -- "1" Users
+VerificationStatuses "0..*" -- "1" Users
+ProfileHistory "0..*" -- "1" Users
+MerchantMembersInvitations "0..*" -- "1" Merchants
+@enduml

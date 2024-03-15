@@ -1,0 +1,34 @@
+@startuml
+package "Application" {
+    [User Management]
+    [Merchant Management]
+    [Verification]
+    [Profile History]
+}
+
+package "Database" {
+    [PostgreSQL Database]
+}
+
+[User Management] --> [Users]
+[Merchant Management] --> [Merchants]
+[Merchant Management] --> [Merchant Members]
+[User Management] --> [Individuals]
+[Verification] --> [Verification Statuses]
+[Profile History] --> [Profile History]
+
+[Users] ..> [Addresses] : "Has"
+[Merchants] ..> [Users] : "Created By"
+[Merchant Members] --> [Users] : "Has Members"
+[Individuals] --> [Users] : "Belongs To"
+[Verification Statuses] --> [Users] : "Associated With"
+[Profile History] --> [Users] : "Related To"
+
+[PostgreSQL Database] --> [Users]
+[PostgreSQL Database] --> [Addresses]
+[PostgreSQL Database] --> [Merchants]
+[PostgreSQL Database] --> [Merchant Members]
+[PostgreSQL Database] --> [Individuals]
+[PostgreSQL Database] --> [Verification Statuses]
+[PostgreSQL Database] --> [Profile History]
+@enduml

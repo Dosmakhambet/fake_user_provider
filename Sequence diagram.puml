@@ -1,0 +1,33 @@
+@startuml
+actor User
+participant "Application" as App
+participant Users
+participant Merchants
+participant MerchantMembersInvitations
+
+User -> App: Register as a new user
+activate App
+App -> Users: Create new user account
+activate Users
+Users --> App: User account created
+deactivate Users
+App -> Merchants: Create new merchant
+activate Merchants
+Merchants --> App: Merchant created
+deactivate Merchants
+App -> MerchantMembersInvitations: Invite user to become merchant member
+activate MerchantMembersInvitations
+MerchantMembersInvitations --> App: Invitation sent
+deactivate MerchantMembersInvitations
+App --> User: Invitation received
+User --> App: Accept invitation
+App -> MerchantMembersInvitations: Confirm acceptance
+activate MerchantMembersInvitations
+MerchantMembersInvitations --> App: Membership confirmed
+deactivate MerchantMembersInvitations
+App -> Merchants: Add user as merchant member
+activate Merchants
+Merchants --> App: User added as member
+deactivate Merchants
+App --> User: Membership confirmed
+@enduml
