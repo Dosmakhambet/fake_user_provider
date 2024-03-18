@@ -11,7 +11,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Builder
 public class Country {
     @Id
-    private int id;
+    private Long id;
     private Timestamp created;
     private Timestamp updated;
     private String name;

@@ -21,8 +21,7 @@ public class Address {
     private Timestamp archived;
     private String city;
     private String state;
-
-    private int countryId;
+    private Long countryId;
     @Transient
     private Country country;
 

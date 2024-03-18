@@ -106,7 +106,7 @@ class MerchantMembersInvitations {
 
 Addresses "1" -- "0..*" Countries
 Users "1" -- "0..1" Addresses
-Merchants "1" -- "0..*" Users
+Merchants "1" -- "0..*" MerchantMembers
 MerchantMembers "0..*" -- "1" Users
 Individuals "0..1" -- "1" Users
 VerificationStatuses "0..*" -- "1" Users

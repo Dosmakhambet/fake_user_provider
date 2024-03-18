@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Table;
 
 
@@ -20,6 +21,6 @@ public class ProfileHistory {
     private String reason;
     private String comment;
     private String changedValues;
-
+    @Transient
     private User user;
 }

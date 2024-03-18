@@ -23,7 +23,6 @@ public class User {
     private Timestamp archivedAt;
     private String status;
     private boolean filled;
-
     private UUID addressId;
     @Transient
     private Address address;

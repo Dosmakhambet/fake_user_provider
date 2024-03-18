@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table(name = "verification_statuses")
@@ -19,6 +20,6 @@ public class VerificationStatus {
     private String profileType;
     private String details;
     private String verificationStatus;
-
+    @Transient
     private User user;
 }

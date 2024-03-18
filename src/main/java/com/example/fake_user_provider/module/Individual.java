@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table(name = "individuals")
@@ -22,6 +23,6 @@ public class Individual {
     private Timestamp verifiedAt;
     private Timestamp archivedAt;
     private String status;
-
+    @Transient
     private User user;
 }

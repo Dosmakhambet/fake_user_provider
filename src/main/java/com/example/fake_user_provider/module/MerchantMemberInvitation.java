@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table(name = "merchant_members_invitations")
@@ -20,6 +21,6 @@ public class MerchantMemberInvitation {
     private String lastName;
     private String email;
     private String status;
-
+    @Transient
     private Merchant merchant;
 }
