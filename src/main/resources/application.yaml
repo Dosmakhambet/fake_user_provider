@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Fake User Provider
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/fake_user_provider
+    username: postgres
+    password: postgres
+  flyway:
+    url: jdbc:postgresql://localhost:5432/fake_user_provider
+    user: postgres
+    password: postgres
+
+server:
+  port: 8081
