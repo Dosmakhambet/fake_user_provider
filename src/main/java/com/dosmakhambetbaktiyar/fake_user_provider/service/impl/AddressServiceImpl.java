@@ -11,6 +11,9 @@ import reactor.core.publisher.Mono;
 
 import org.springframework.data.domain.Pageable;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 @Service
@@ -25,6 +28,8 @@ public class AddressServiceImpl implements AddressService {
         if (entity.getId() != null) {
             return Mono.error(new IllegalArgumentException("Id must be null"));
         }
+
+        entity.setArchived(Timestamp.from(Instant.now().plus(365, ChronoUnit.DAYS)));
 
         if (entity.getCountry().getId() != null) {
             return countryRepository.findById(entity.getCountry().getId())

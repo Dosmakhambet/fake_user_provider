@@ -14,6 +14,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import org.springframework.data.domain.Pageable;
+
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 //TODO: использовать сервис другого модуля или репозиторий другого модуля ?
@@ -27,7 +31,8 @@ public class MerchantServiceImpl implements MerchantService {
 
     public Mono<Merchant> save(Merchant entity) {
         assert entity.getId() == null;
-
+        entity.setCreatorId(entity.getCreator().getId());
+        entity.setArchivedAt(Timestamp.from(Instant.now().plus(365, ChronoUnit.DAYS)));
         return repository.save(entity);
     }
 

@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
         entity.setCreated(Timestamp.from(Instant.now()));
         entity.setUpdated(Timestamp.from(Instant.now()));
         entity.setVerifiedAt(Timestamp.from(Instant.now()));
-        entity.setArchivedAt(Timestamp.from(Instant.now().plus(1, ChronoUnit.YEARS)));
-        entity.setSecretKey(UUID.randomUUID().toString());
+        entity.setArchivedAt(Timestamp.from(Instant.now().plus(365, ChronoUnit.DAYS)));
+        entity.setSecretKey(UUID.randomUUID().toString().substring(0, 32));
         entity.setStatus(UserStatus.ACTIVE);
         entity.setFilled(entity.getAddress() != null);
 
