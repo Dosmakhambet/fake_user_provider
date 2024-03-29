@@ -4,7 +4,7 @@ import com.dosmakhambetbaktiyar.fake_user_provider.mapper.IndividualMapper;
 import com.dosmakhambetbaktiyar.fake_user_provider.mapper.UserMapper;
 import com.dosmakhambetbaktiyar.fake_user_provider.service.IndividualService;
 import com.dto.IndividualDto;
-import com.dto.RegisterDto;
+import com.dto.RegisterIndividualDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +29,7 @@ public class IndividualController {
     }
 
     @PostMapping("/")
-    public Mono<IndividualDto> create(@RequestBody RegisterDto registerDto) {
+    public Mono<IndividualDto> create(@RequestBody RegisterIndividualDto registerDto) {
         return service.save(mapper.toEntity(registerDto), userMapper.toEntity(registerDto)).map(mapper::toDto);
     }
 

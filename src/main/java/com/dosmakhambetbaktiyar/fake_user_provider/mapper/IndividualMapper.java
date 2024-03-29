@@ -2,7 +2,7 @@ package com.dosmakhambetbaktiyar.fake_user_provider.mapper;
 
 import com.dto.IndividualDto;
 import com.dosmakhambetbaktiyar.fake_user_provider.module.Individual;
-import com.dto.RegisterDto;
+import com.dto.RegisterIndividualDto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 
@@ -12,5 +12,5 @@ public interface IndividualMapper {
     @InheritInverseConfiguration
     Individual toEntity(IndividualDto individual);
 
-    Individual toEntity(RegisterDto registerDto);
+    Individual toEntity(RegisterIndividualDto registerDto);
 }
